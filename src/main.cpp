@@ -1,13 +1,13 @@
 #include <iostream>
 #include <windows.h>
 #include <cmath>
-#include <thread>
+#include <chrono>
 
 const int SCREEN_WIDTH = 120;
 const int SCREEN_HEIGHT = 40;
-const double PI = 3.14159265f;
+const double PI = 3.14159265;
 
-// TODO: Calculate delta time and use it to update the angle and manipulate the sine wave.
+// TODO: Read user input to change the components of the sinusoidal curve.
 
 /**
  * Draws a sinusoidal curve on the screen.
@@ -33,8 +33,16 @@ int main()
     double angle = 0.0f;
     bool running = true;
 
+    auto tStart = std::chrono::high_resolution_clock::now();
     while (running)
     {
+        auto tEnd = std::chrono::high_resolution_clock::now();
+        double elapsedTimeMs = std::chrono::duration<double, std::milli>(tEnd - tStart).count() / 1000.0;
+        tStart = tEnd;
+
+        angle += 3.0 * elapsedTimeMs;
+        if (angle > 2 * PI)     angle -= 2 * PI;
+
         double period = SCREEN_WIDTH / 4;
         double a = SCREEN_HEIGHT / 2;
         double b = 2 * PI / period;
@@ -42,13 +50,8 @@ int main()
         double d = SCREEN_HEIGHT / 2;
         drawSin(a, b, c, d, screen);    // f(x) = a * sin(bx + c) + d
 
-        angle += 0.1;
-        if (angle > 2 * PI)     angle -= 2 * PI;
-
         screen[SCREEN_WIDTH * SCREEN_HEIGHT - 1] = '\0';
         WriteConsoleOutputCharacterW(hConsole, screen, SCREEN_WIDTH * SCREEN_HEIGHT, { 0, 0 }, &dwBytesWritten);
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(16));
     }
 
     delete[] screen;
