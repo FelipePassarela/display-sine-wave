@@ -52,7 +52,7 @@ void readInput(double& a, double& b, double& c, double& d, double elapsedTimeMs)
 
 int main()
 {
-    wchar_t* screen = new wchar_t[SCREEN_WIDTH * SCREEN_HEIGHT];
+    wchar_t* screen = new wchar_t[SCREEN_WIDTH * SCREEN_HEIGHT + 1];
     HANDLE hConsole = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
     SetConsoleActiveScreenBuffer(hConsole);
     DWORD dwBytesWritten = 0;
@@ -80,7 +80,7 @@ int main()
         drawComponentsInfo(a, b, angle, d, screen);
         drawSin(a, b, angle, d, screen);    // f(x) = a * sin(bx + c) + d
 
-        screen[SCREEN_WIDTH * SCREEN_HEIGHT - 1] = '\0';
+        screen[SCREEN_WIDTH * SCREEN_HEIGHT] = '\0';
         WriteConsoleOutputCharacterW(hConsole, screen, SCREEN_WIDTH * SCREEN_HEIGHT, { 0, 0 }, &dwBytesWritten);
     }
 
