@@ -7,6 +7,8 @@ const int SCREEN_WIDTH = 120;
 const int SCREEN_HEIGHT = 40;
 const double PI = 3.14159265;
 
+// TODO: Add CMakelists.txt file to compile the project using CMake.
+
 /**
  * Draws a sinusoidal curve on the screen.
  * 
