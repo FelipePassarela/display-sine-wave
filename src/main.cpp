@@ -77,8 +77,8 @@ int main()
         angle += 3.0 * elapsedTimeMs;
         if (angle > 2 * PI) angle -= 2 * PI;
 
-        drawComponentsInfo(a, b, angle, d, screen);
         drawSin(a, b, angle, d, screen);    // f(x) = a * sin(bx + c) + d
+        drawComponentsInfo(a, b, angle, d, screen);
 
         screen[SCREEN_WIDTH * SCREEN_HEIGHT] = '\0';
         WriteConsoleOutputCharacterW(hConsole, screen, SCREEN_WIDTH * SCREEN_HEIGHT, { 0, 0 }, &dwBytesWritten);
@@ -94,7 +94,7 @@ void drawComponentsInfo(double a, double b, double c, double d, wchar_t* screen)
 {
     wchar_t* componentsInfo = new wchar_t[SCREEN_WIDTH];
     swprintf_s(componentsInfo, SCREEN_WIDTH, L"Amplitude: %5.2f, Frequency: %5.2f, Phase Shift: %5.2f, Vertical Shift: %5.2f", a, b, c, d);
-    for (int i = 0; i < wcslen(componentsInfo); i++)
+    for (size_t i = 0; i < wcslen(componentsInfo); i++)
     {
         screen[i] = componentsInfo[i];
     }
