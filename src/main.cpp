@@ -79,6 +79,7 @@ void drawSin(double a, double b, double c, double d, wchar_t* screen)
         }
     }
 
+    // Draw an indicator on the right side of the screen.
     screen[int(y) * SCREEN_WIDTH + SCREEN_WIDTH - 2] = L'>';
-    screen[int(y) * SCREEN_WIDTH + SCREEN_WIDTH - 1] = L'o';
+    screen[int(y) * SCREEN_WIDTH + SCREEN_WIDTH - 1] = L'O';
 }
