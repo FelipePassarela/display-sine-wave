@@ -59,9 +59,9 @@ int main()
 
     double angle = 0.0f;
     double period = SCREEN_WIDTH / 4;
-    double a = SCREEN_HEIGHT / 2;
-    double b = 2 * PI / period;
-    double d = SCREEN_HEIGHT / 2;
+    double a = SCREEN_HEIGHT / 2;   // Amplitude
+    double b = 2 * PI / period;     // Frequency
+    double d = SCREEN_HEIGHT / 2;   // Vertical shift
 
     bool running = true;
     auto tStart = std::chrono::high_resolution_clock::now();
