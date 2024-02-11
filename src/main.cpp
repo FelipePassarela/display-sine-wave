@@ -145,7 +145,7 @@ void readInput(double& a, double& b, double& c, double& d, double elapsedTimeMs)
 
     if (a > SCREEN_HEIGHT / 2)                  a = SCREEN_HEIGHT / 2;
     if (a < -SCREEN_HEIGHT / 2)                 a = -SCREEN_HEIGHT / 2;
-    if (b > PI / 10)                            b = PI / 10;
+    if (b > PI / 8)                             b = PI / 8;
     if (b < 0)                                  b = 0;
     if (c > 2 * PI)                             c -= 2 * PI;
     if (c < 0)                                  c += 2 * PI;
